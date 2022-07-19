@@ -1,0 +1,107 @@
+.modalRoot {
+  @apply fixed inset-0 bg-black bg-opacity-25;
+}
+
+.container {
+  @apply fixed inset-0 overflow-y-auto;
+}
+
+.body {
+  @apply flex min-h-full items-center justify-center p-4 text-center;
+}
+
+.panel {
+  @apply w-full max-w-md transform overflow-hidden rounded-2xl bg-white text-left align-middle shadow-xl transition-all drop-shadow-selected;
+}
+
+.panelTitle {
+  @apply flex justify-between p-8;
+}
+
+.panelTitleText {
+  @apply text-2xl font-bold;
+}
+
+.panelCloseIcon {
+  @apply text-xl text-font-main cursor-pointer;
+}
+
+.details {
+  @apply overflow-hidden rounded-lg px-8 flex flex-col bg-white p-3;
+}
+
+.detailsBody {
+  @apply flex;
+}
+
+.detailsBodyImage {
+  @apply flex-1;
+}
+
+.detailsBodyImageFile {
+  @apply w-36;
+}
+
+.detailsTitle {
+  @apply flex-col w-full text-xl mx-3;
+}
+
+.detailsTitleText {
+  @apply w-full text-xl ml-3;
+}
+
+.detailsPrice {
+  @apply w-full text-xl ml-3 mt-5;
+}
+
+.qtyContainer {
+  @apply flex justify-center;
+}
+
+.qtyBody {
+  @apply flex-1;
+}
+
+.qtyTitle {
+  @apply mb-1 text-center;
+}
+
+.qtyChange {
+  @apply flex justify-center;
+}
+
+.qtyChangeIcon {
+  @apply h-8 w-8 cursor-pointer rounded-lg border-none text-2xl bg-transparent hover:bg-primary-inverse-hover active:bg-primary-inverse-hover-click text-primary mx-2 align-middle;
+}
+
+.qtyAmount {
+  @apply h-8 w-8 text-center inline-flex justify-center items-center;
+}
+
+.qtyTotal {
+  @apply flex-1;
+}
+
+.qtyTotalTitle {
+  @apply mb-1 text-center;
+}
+
+.qtyTotalAmount {
+  @apply flex justify-center;
+}
+
+.buttons {
+  @apply bg-bg-elephant-grey text-center p-4 flex;
+}
+
+.button {
+  @apply flex-1 mx-2;
+}
+
+.itemAdded {
+  @apply flex bg-bg-elephant-grey justify-center items-center h-20;
+}
+
+.itemAddedText {
+  @apply text-primary text-lg;
+}
