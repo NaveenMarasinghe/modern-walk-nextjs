@@ -1,0 +1,70 @@
+.container {
+  @apply h-screen w-screen flex justify-center items-center;
+}
+
+.containerBody {
+  @apply w-[20%];
+}
+
+.title {
+  @apply mb-[70px] text-5xl text-font-main font-bold text-center;
+}
+
+.emailRow {
+  @apply text-sm font-normal mb-1 flex;
+}
+
+.emailStar {
+  @apply text-primary;
+}
+
+.inputError {
+  @apply text-sm font-normal mb-1 flex text-danger-color;
+}
+
+.passwordRow {
+  @apply text-sm font-normal mt-6 mb-1 flex;
+}
+
+.passwordInputRow {
+  @apply relative;
+}
+
+.passwordIcon {
+  @apply flex justify-center items-center absolute right-[12px] top-3;
+}
+
+.icon {
+  @apply hover:cursor-pointer;
+}
+
+.forgot {
+  @apply text-primary mt-1 text-sm font-normal hover:cursor-pointer;
+}
+
+.rememberRow {
+  @apply mt-8 flex justify-between;
+}
+
+.rememberCheck {
+  @apply text-base flex items-center hover:cursor-pointer;
+}
+
+.rememberCheckbox {
+  @apply text-primary hover:bg-primary-inverse-hover rounded-lg h-8 w-8 p-1;
+}
+
+.rememberCheckboxActive {
+  @apply text-font-main hover:text-primary hover:bg-primary-inverse-hover rounded-lg h-8 w-8 p-1;
+}
+
+.rememberText {
+  @apply ml-1;
+}
+
+.button {
+  @apply px-6 pt-3.5 pb-2.5 rounded-lg font-bold text-base cursor-pointer h-12 border-none;
+  @apply bg-primary text-white;
+  @apply hover:bg-primary-hover hover:text-white hover:drop-shadow-button;
+  @apply active:bg-primary-selected active:text-white active:border-none active:drop-shadow-button;
+}

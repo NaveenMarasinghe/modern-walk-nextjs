@@ -1,5 +1,4 @@
-import { User } from "../types/user";
-import { axiosInstance } from "./api.services";
+import { axiosInstance } from "@services/api.services";
 
 type NewUser = {
   name: string;

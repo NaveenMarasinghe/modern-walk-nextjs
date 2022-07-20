@@ -1,7 +1,7 @@
 import * as React from "react";
 import Snackbar, { SnackbarOrigin } from "@mui/material/Snackbar";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
-import { useApp } from "../context/appContext";
+import { useApp } from "@context/appContext";
 
 export interface State extends SnackbarOrigin {
   open: boolean;

@@ -10,6 +10,10 @@
   @apply flex min-h-full items-center justify-center p-4 text-center;
 }
 
+.dialog {
+  @apply relative z-10;
+}
+
 .panel {
   @apply w-full max-w-md transform overflow-hidden rounded-2xl bg-white text-left align-middle shadow-xl transition-all drop-shadow-selected;
 }
@@ -35,11 +39,7 @@
 }
 
 .detailsBodyImage {
-  @apply flex-1;
-}
-
-.detailsBodyImageFile {
-  @apply w-36;
+  @apply flex-1 w-36 h-full relative;
 }
 
 .detailsTitle {

@@ -1,0 +1,26 @@
+.container {
+  @apply h-screen w-screen flex justify-center items-center;
+}
+
+.containerBody {
+  @apply w-[20%];
+}
+
+.title {
+  @apply mb-[70px] text-5xl text-font-main font-bold text-center;
+}
+
+.label {
+  @apply text-sm font-normal my-1 flex;
+}
+
+.star {
+  @apply text-primary;
+}
+
+.button {
+  @apply px-6 pt-3.5 pb-2.5 rounded-lg font-bold text-base cursor-pointer h-12 border-none;
+  @apply bg-primary text-white;
+  @apply hover:bg-primary-hover hover:text-white hover:drop-shadow-button;
+  @apply active:bg-primary-selected active:text-white active:border-none active:drop-shadow-button;
+}

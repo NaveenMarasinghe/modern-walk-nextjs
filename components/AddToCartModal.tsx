@@ -1,13 +1,14 @@
 import { useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
-import { Items } from "../types/items";
-import { useCart } from "../context/cartContext";
-import { useUser } from "../context/userContext";
+import { Items } from "@typesData/items";
+import { useCart } from "@context/cartContext";
+import { useUser } from "@context/userContext";
 import { useQueryClient, useMutation, useQuery } from "@tanstack/react-query";
-import { ProductAPI } from "../services/product.services";
-import styles from "../styles/addToCartModal.module.scss";
-import Button from "../components/Button";
+import { ProductAPI } from "@services/product.services";
+import styles from "@styles/addToCartModal.module.scss";
+import Button from "@components/Button";
+import Image from "next/image";
 
 type Props = {
   data: Items;
@@ -25,6 +26,7 @@ export default function AddToCartModal({ data }: Props) {
 
   function closeModal() {
     setIsOpen(false);
+    console.log("close");
   }
 
   function openModal() {
@@ -39,7 +41,7 @@ export default function AddToCartModal({ data }: Props) {
   };
   useEffect(() => {
     setTotal(qty * data.price);
-  }, [qty]);
+  }, [qty, data]);
 
   const patchCart = async (items: any) => {
     if (user?.id) {
@@ -85,7 +87,7 @@ export default function AddToCartModal({ data }: Props) {
         </Button>
       </div>
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={closeModal}>
+        <Dialog as="div" className={styles.dialog} onClose={closeModal}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -122,10 +124,7 @@ export default function AddToCartModal({ data }: Props) {
                   <div className={styles.details}>
                     <div className={styles.detailsBody}>
                       <div className={styles.detailsBodyImage}>
-                        <img
-                          src={data.image}
-                          className={styles.detailsBodyImageFile}
-                        />
+                        <Image src={data.image} alt="item" layout="fill" />
                       </div>
                       <div className={styles.detailsTitle}>
                         <div className={styles.detailsTitleText}>

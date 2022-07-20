@@ -1,0 +1,62 @@
+.cartButton {
+  @apply px-6 pt-3.5 pb-2.5 rounded-lg font-bold text-base cursor-pointer h-12 border-none;
+  @apply bg-primary text-white;
+  @apply hover:bg-primary-hover hover:text-white hover:drop-shadow-button;
+  @apply active:bg-primary-selected active:text-white active:border-none active:drop-shadow-button;
+}
+
+.dialog {
+  @apply relative z-10;
+}
+
+.popoverBackground {
+  @apply fixed inset-0 bg-black bg-opacity-25;
+}
+
+.content {
+  @apply fixed inset-0 overflow-y-auto;
+}
+
+.contentBody {
+  @apply flex min-h-full items-center justify-center p-4 text-center;
+}
+
+.dialogPanel {
+  @apply w-full max-w-md transform overflow-hidden rounded-2xl bg-white text-left align-middle shadow-xl transition-all;
+}
+
+.dialogPanelContent {
+  @apply flex justify-between px-8 pt-8;
+}
+
+.dialogTitle {
+  @apply text-2xl font-bold;
+}
+
+.dialogCrossButton {
+  @apply cursor-pointer;
+}
+
+.dialogConfirm {
+  @apply px-8 h-24;
+}
+
+.dialogConfirmText {
+  @apply text-base font-normal;
+}
+
+.dialogButtons {
+  @apply py-[18px] px-8 flex justify-end bg-bg-elephant-grey;
+}
+
+.popoverPanel {
+  @apply absolute z-10 right-0;
+}
+
+.popoverContainer {
+  @apply bg-white rounded-xl pt-8 drop-shadow-selected;
+}
+
+.popoverButtons {
+  @apply flex justify-end mr-4 py-3;
+}

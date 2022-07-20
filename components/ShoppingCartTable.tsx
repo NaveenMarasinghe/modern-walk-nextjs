@@ -2,17 +2,13 @@ import * as React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import CloseIcon from "@mui/icons-material/Close";
-import { useCart } from "../context/cartContext";
-import { useUser } from "../context/userContext";
+import { useCart } from "@context/cartContext";
+import { useUser } from "@context/userContext";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { ProductAPI } from "../services/product.services";
-import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { ProductAPI } from "@services/product.services";
 
 export type CartItems = {
   id: number;

@@ -1,11 +1,11 @@
 import * as React from "react";
-import styles from "../styles/Layout.module.scss";
+import styles from "@styles/Layout.module.scss";
 import Link from "next/link";
-import ShoppingCart from "../components/ShoppingCart";
-import { useUser } from "../context/userContext";
-import { useApp } from "../context/appContext";
-import SnackBar from "../components/SnackBar";
-import Button from "../components/Button";
+import ShoppingCart from "@components/ShoppingCart";
+import { useUser } from "@context/userContext";
+import { useApp } from "@context/appContext";
+import SnackBar from "@components/SnackBar";
+import Button from "@components/Button";
 
 type Props = {
   children: React.ReactNode;
@@ -37,15 +37,26 @@ export default function PageTemplate({ children }: Props) {
         <div className={styles.headerRight}>
           {user?.name ? (
             <div className={styles.headerRightItems}>
-              <ShoppingCart setOpen={setOpen} open={open} />
-              <Button varient="primary" onClick={handleLogout} className="mx-2">
+              <div className={styles.headerRightCartButton}>
+                <ShoppingCart setOpen={setOpen} open={open} />
+              </div>
+              <Button
+                varient="primary"
+                onClick={handleLogout}
+                className={styles.headerRightCartButton}
+              >
                 Logout
               </Button>
             </div>
           ) : (
-            <Link href="/login" style={{ textDecoration: "none" }}>
+            <Link href="/signin" style={{ textDecoration: "none" }}>
               <a>
-                <Button varient="primary">Login</Button>
+                <Button
+                  varient="primary"
+                  className={styles.headerRightCartButton}
+                >
+                  Sign in
+                </Button>
               </a>
             </Link>
           )}

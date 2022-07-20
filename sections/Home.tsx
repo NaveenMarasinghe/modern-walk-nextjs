@@ -1,9 +1,9 @@
-import styles from "../styles/Home.module.css";
-import Card from "../components/Card";
+import styles from "@styles/Home.module.css";
+import Card from "@components/Card";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
-import { ProductAPI } from "../services/product.services";
-import { Items } from "../types/items";
+import { ProductAPI } from "@services/product.services";
+import { Items } from "@typesData/items";
 
 export default function Home() {
   const { isLoading, data } = useQuery(["clothing"], () => {
@@ -26,14 +26,14 @@ export default function Home() {
       <div className={styles.homeCategories}>
         <h2>Categories</h2>
         <div className={styles.homeCategoriesItems}>
-          <Link href="/mens-clothing" style={{ textDecoration: "none" }}>
+          <Link href="/men" style={{ textDecoration: "none" }}>
             <a>
               <div className={styles.categoryCard + " " + styles.men}>
                 {`Men's Clothing`}
               </div>
             </a>
           </Link>
-          <Link href="/womens-clothing" style={{ textDecoration: "none" }}>
+          <Link href="/women" style={{ textDecoration: "none" }}>
             <a>
               <div className={styles.categoryCard + " " + styles.women}>
                 {`Women's Clothing`}

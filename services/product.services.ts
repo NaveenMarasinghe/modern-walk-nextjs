@@ -1,6 +1,5 @@
-import { axiosInstance } from "./api.services";
-import { ItemsResponse, ErrorResponse } from "../types/items";
-import { Items } from "../types/items";
+import { axiosInstance } from "@services/api.services";
+import { ItemsResponse, ErrorResponse, Items } from "@typesData/items";
 
 export type ClothingType = "men" | "women" | "clothing";
 
