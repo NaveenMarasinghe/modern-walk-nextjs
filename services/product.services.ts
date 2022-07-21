@@ -12,15 +12,15 @@ export type CartItems = {
 };
 
 export type Response = {
-  result?: ItemsResponse;
+  result?: Items[];
   error?: ErrorResponse;
 };
 
-const clothing = async (category: ClothingType): Promise<Response> => {
+const clothing = async (category: any): Promise<Response> => {
   try {
     const result: ItemsResponse = await axiosInstance.get(`/${category}`);
     console.log(result);
-    return { result: result };
+    return { result: result.data };
   } catch (err: any) {
     const error = err as ErrorResponse;
     console.log(error);

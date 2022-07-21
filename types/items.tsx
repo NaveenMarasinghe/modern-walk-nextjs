@@ -18,17 +18,11 @@ export type CategoryDetails = {
 };
 
 export type ItemsResponse = {
-  config: any;
   data: Items[];
-  headers: any;
-  request: any;
-  status: number;
-  statusText: string;
 };
 
 export type ErrorResponse = {
   code: string;
-  config: any;
   message: string;
   name: string;
   request: any;

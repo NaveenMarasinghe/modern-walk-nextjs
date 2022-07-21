@@ -111,15 +111,19 @@ export default function ShoppingCart({ setOpen, open }: Props) {
                     </div>
 
                     <div className={styles.dialogButtons}>
-                      <Button varient="secondary-danger" onClick={closeModal}>
-                        Cancel
-                      </Button>
-                      <Button
-                        varient="primary-danger"
-                        onClick={handleClearCart}
-                      >
-                        Clear cart
-                      </Button>
+                      <div className={styles.popoverButton}>
+                        <Button varient="secondary-danger" onClick={closeModal}>
+                          Cancel
+                        </Button>
+                      </div>
+                      <div className={styles.popoverButton}>
+                        <Button
+                          varient="primary-danger"
+                          onClick={handleClearCart}
+                        >
+                          Clear cart
+                        </Button>
+                      </div>
                     </div>
                   </Dialog.Panel>
                 </Transition.Child>
@@ -143,17 +147,21 @@ export default function ShoppingCart({ setOpen, open }: Props) {
           <div className={styles.popoverContainer}>
             <ShoppingCartTable />
             <div className={styles.popoverButtons}>
-              <Button
-                varient="secondary"
-                onClick={async () => {
-                  setShowShoppingCart(false);
-                }}
-              >
-                Close
-              </Button>
-              <Button varient="primary" onClick={openModal}>
-                Clear cart
-              </Button>
+              <div className={styles.popoverButton}>
+                <Button
+                  varient="secondary"
+                  onClick={async () => {
+                    setShowShoppingCart(false);
+                  }}
+                >
+                  Close
+                </Button>
+              </div>
+              <div className={styles.popoverButton}>
+                <Button varient="primary" onClick={openModal}>
+                  Clear cart
+                </Button>
+              </div>
             </div>
           </div>
         </Popover.Panel>
