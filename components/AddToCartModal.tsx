@@ -26,7 +26,7 @@ export default function AddToCartModal({ data }: Props) {
 
   function closeModal() {
     setIsOpen(false);
-    console.log("close");
+    console.log("close", isOpen);
   }
 
   function openModal() {

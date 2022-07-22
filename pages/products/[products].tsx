@@ -12,16 +12,6 @@ type ClothingProp = {
   category: ClothingType;
 };
 
-export async function getServerSideProps({ params }: any) {
-  const res = await ProductAPI.clothing(params.products);
-  const postData = await res.result;
-  return {
-    props: {
-      postData,
-    },
-  };
-}
-
 export default function Products({ category }: ClothingProp) {
   const router = useRouter();
   const { products } = router.query;

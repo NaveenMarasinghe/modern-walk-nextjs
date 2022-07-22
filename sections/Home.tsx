@@ -10,17 +10,11 @@ type productDataProp = {
 };
 
 export default function Home({ data }: productDataProp) {
-  // const { isLoading, data } = useQuery(["clothing"], () => {
-  //   return ProductAPI.clothing("clothing");
-  // });
-  // console.log(data?.result?.data);
-
   console.log("data", data);
   return (
     <div className={styles.homeContainer}>
       <h2>Flash sale</h2>
       <div className={styles.homeFlashSaleItems}>
-        {/* {isLoading && <div>Loading...</div>} */}
         {!data?.error ? (
           data?.map((item: Items) => <Card key={item.id} data={item} />)
         ) : (
@@ -37,7 +31,7 @@ export default function Home({ data }: productDataProp) {
               </div>
             </a>
           </Link>
-          <Link href="/products/women" style={{ textDecoration: "none" }}>
+          <Link href="/category/women" style={{ textDecoration: "none" }}>
             <a>
               <div className={styles.categoryCard + " " + styles.women}>
                 {`Women's Clothing`}
