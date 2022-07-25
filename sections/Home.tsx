@@ -1,4 +1,4 @@
-import styles from "@styles/Home.module.css";
+import styles from "@styles/Home.module.scss";
 import Card from "@components/Card";
 import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
@@ -35,6 +35,20 @@ export default function Home({ data }: productDataProp) {
             <a>
               <div className={styles.categoryCard + " " + styles.women}>
                 {`Women's Clothing`}
+              </div>
+            </a>
+          </Link>
+          <Link href="/category/electronics" style={{ textDecoration: "none" }}>
+            <a>
+              <div className={styles.categoryCard + " " + styles.men}>
+                {`Electronics`}
+              </div>
+            </a>
+          </Link>
+          <Link href="/category/jewelary" style={{ textDecoration: "none" }}>
+            <a>
+              <div className={styles.categoryCard + " " + styles.women}>
+                {`Jewelary`}
               </div>
             </a>
           </Link>

@@ -1,4 +1,4 @@
-import "@styles/Home.module.css";
+import "@styles/Home.module.scss";
 import Layout from "@components/Layout";
 import Home from "@sections/Home";
 import { ProductAPI } from "@services/product.services";

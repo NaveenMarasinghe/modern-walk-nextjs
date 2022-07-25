@@ -5,16 +5,16 @@
 }
 
 .homeCategoriesItems {
-  display: grid;
-  grid-template-columns: 48% 48%;
+  display: flex;
   justify-content: space-between;
 }
 
 .categoryCard {
+  width: 400px;
   border-radius: 30px;
-  padding: 100px 50px;
+  padding: 50px 20px;
   text-align: center;
-  font-size: 60px;
+  font-size: 40px;
   color: white;
   font-weight: bolder;
   margin-top: 20px;
@@ -23,9 +23,9 @@
 }
 
 .women {
-  background-color: #FF5E84;
+  background-color: #ff5e84;
 }
 
 .men {
-  background-color: #2BD9AF;
+  background-color: #2bd9af;
 }

@@ -1,5 +1,6 @@
 import { axiosInstance } from "@services/api.services";
 import { ItemsResponse, ErrorResponse, Items } from "@typesData/items";
+import Category from "pages/category/[category]";
 
 export type ClothingType = "men" | "women" | "clothing";
 
@@ -16,6 +17,15 @@ export type Response = {
   error?: ErrorResponse;
 };
 
+export type categoriesResult = {
+  data: string[];
+};
+
+export type CategoryResponse = {
+  result?: string[];
+  error?: ErrorResponse;
+};
+
 const clothing = async (category: any): Promise<Response> => {
   try {
     const result: ItemsResponse = await axiosInstance.get(`/${category}`);
@@ -27,6 +37,17 @@ const clothing = async (category: any): Promise<Response> => {
     return { error: error };
   }
 };
+
+async function getCategories(): Promise<CategoryResponse> {
+  try {
+    const result: categoriesResult = await axiosInstance.get(`/${Category}`);
+    console.log(result);
+    return { result: result.data };
+  } catch (err: any) {
+    const error = err as ErrorResponse;
+    return { error: error };
+  }
+}
 
 async function getCart(id: number) {
   try {
@@ -70,4 +91,5 @@ export const ProductAPI = {
   addToCart: addToCart,
   removeFromCart: removeFromCart,
   clearCart: clearCart,
+  getCategories: getCategories,
 };

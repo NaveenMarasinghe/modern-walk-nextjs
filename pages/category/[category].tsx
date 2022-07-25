@@ -9,6 +9,8 @@ export async function getStaticPaths() {
   const paths = [
     { params: { category: "men" } },
     { params: { category: "women" } },
+    { params: { category: "electronics" } },
+    { params: { category: "jewelary" } },
   ];
   return {
     paths,
