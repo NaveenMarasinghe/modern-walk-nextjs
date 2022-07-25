@@ -82,7 +82,7 @@ export default function ShoppingCart({ setOpen, open }: Props) {
 
             <div className={styles.content}>
               <div className={styles.contentBody}>
-                <Transition.Child
+                {/* <Transition.Child
                   as={Fragment}
                   enter="ease-out duration-300"
                   enterFrom="opacity-0 scale-95"
@@ -90,43 +90,43 @@ export default function ShoppingCart({ setOpen, open }: Props) {
                   leave="ease-in duration-200"
                   leaveFrom="opacity-100 scale-100"
                   leaveTo="opacity-0 scale-95"
-                >
-                  <Dialog.Panel className={styles.dialogPanel}>
-                    <div className={styles.dialogPanelContent}>
-                      <Dialog.Title as="div" className={styles.dialogTitle}>
-                        Clear cart
-                      </Dialog.Title>
-                      <div
-                        className={styles.dialogCrossButton}
-                        onClick={closeModal}
-                      >
-                        X
-                      </div>
+                > */}
+                <Dialog.Panel className={styles.dialogPanel}>
+                  <div className={styles.dialogPanelContent}>
+                    <Dialog.Title as="div" className={styles.dialogTitle}>
+                      Clear cart
+                    </Dialog.Title>
+                    <div
+                      className={styles.dialogCrossButton}
+                      onClick={closeModal}
+                    >
+                      X
                     </div>
-                    <div className={styles.dialogConfirm}>
-                      <p className={styles.dialogConfirmText}>
-                        Are you sure you want to remove all items in the
-                        shopping cart?
-                      </p>
-                    </div>
+                  </div>
+                  <div className={styles.dialogConfirm}>
+                    <p className={styles.dialogConfirmText}>
+                      Are you sure you want to remove all items in the shopping
+                      cart?
+                    </p>
+                  </div>
 
-                    <div className={styles.dialogButtons}>
-                      <div className={styles.popoverButton}>
-                        <Button varient="secondary-danger" onClick={closeModal}>
-                          Cancel
-                        </Button>
-                      </div>
-                      <div className={styles.popoverButton}>
-                        <Button
-                          varient="primary-danger"
-                          onClick={handleClearCart}
-                        >
-                          Clear cart
-                        </Button>
-                      </div>
+                  <div className={styles.dialogButtons}>
+                    <div className={styles.popoverButton}>
+                      <Button varient="secondary-danger" onClick={closeModal}>
+                        Cancel
+                      </Button>
                     </div>
-                  </Dialog.Panel>
-                </Transition.Child>
+                    <div className={styles.popoverButton}>
+                      <Button
+                        varient="primary-danger"
+                        onClick={handleClearCart}
+                      >
+                        Clear cart
+                      </Button>
+                    </div>
+                  </div>
+                </Dialog.Panel>
+                {/* </Transition.Child> */}
               </div>
             </div>
           </Dialog>

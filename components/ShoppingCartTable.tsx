@@ -9,6 +9,7 @@ import { useCart } from "@context/cartContext";
 import { useUser } from "@context/userContext";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { ProductAPI } from "@services/product.services";
+import Button from "@components/Button";
 
 export type CartItems = {
   id: number;
@@ -82,23 +83,17 @@ export default function ShoppingCartTable() {
                 <TableCell align="right">{row.qty}</TableCell>
                 <TableCell align="right">{row.price}</TableCell>
                 <TableCell align="center">
-                  <button
-                    className="border-none bg-transparent hover:cursor-pointer"
-
-                    // onClick={() => mutation.mutate(row.id)}
+                  {/* <Button
+                    varient="primary-danger"
+                     onClick={() => mutation.mutate(row.id)}
                   >
                     <CloseIcon className="text-red-500" />
-                  </button>
+                  </Button> */}
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
-        {/* {({ close }) => (
-          <button className="btn-2-primary" onClick={openModal}>
-            Close
-          </button>
-        )} */}
       </div>
       <div className="flex justify-end bg-bg-elephant-grey rounded-b-xl px-8"></div>
     </div>

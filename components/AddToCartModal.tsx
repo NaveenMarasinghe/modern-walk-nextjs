@@ -9,29 +9,17 @@ import { ProductAPI } from "@services/product.services";
 import styles from "@styles/AddToCartModal.module.scss";
 import Button from "@components/Button";
 import Image from "next/image";
+import { useAddToCartModal } from "@context/AddToCartModalContext";
 
-type Props = {
-  data: Items;
-};
-
-export default function AddToCartModal({ data }: Props) {
-  let [isOpen, setIsOpen] = useState(false);
+export default function AddToCartModal() {
+  const { modalData, closeModal } = useAddToCartModal();
   const [qty, setQty] = useState(1);
-  const [total, setTotal] = useState(data.price);
+  const [total, setTotal] = useState(modalData?.price);
   const { cart, addToCart } = useCart();
   const { user } = useUser();
   const [added, setAdded] = useState(false);
 
   const queryClient = useQueryClient();
-
-  function closeModal() {
-    setIsOpen(false);
-    console.log("close", isOpen);
-  }
-
-  function openModal() {
-    setIsOpen(true);
-  }
 
   const handlePlus = () => {
     setQty(qty + 1);
@@ -40,8 +28,10 @@ export default function AddToCartModal({ data }: Props) {
     setQty(qty - 1);
   };
   useEffect(() => {
-    setTotal(qty * data.price);
-  }, [qty, data]);
+    if (modalData) {
+      setTotal(qty * modalData.price);
+    }
+  }, [qty, modalData]);
 
   const patchCart = async (items: any) => {
     if (user?.id) {
@@ -59,12 +49,12 @@ export default function AddToCartModal({ data }: Props) {
   });
 
   const handleAdd = async () => {
-    if (user?.id) {
+    if (user?.id && modalData) {
       const itemData = {
         userId: user.id,
-        itemId: data.id,
-        title: data.title,
-        price: data.price,
+        itemId: modalData.id,
+        title: modalData.title,
+        price: modalData.price,
         qty: qty,
       };
       addToCart(itemData);
@@ -75,18 +65,12 @@ export default function AddToCartModal({ data }: Props) {
   useEffect(() => {
     setTimeout(() => {
       setAdded(false);
-      //   closeModal();
     }, 5000);
   }, [added]);
 
   return (
     <>
-      <div>
-        <Button varient="primary" onClick={openModal}>
-          Add to cart
-        </Button>
-      </div>
-      <Transition appear show={isOpen} as={Fragment}>
+      <Transition appear show={modalData?.isOpen || false} as={Fragment}>
         <Dialog as="div" className={styles.dialog} onClose={closeModal}>
           <Transition.Child
             as={Fragment}
@@ -102,7 +86,7 @@ export default function AddToCartModal({ data }: Props) {
 
           <div className={styles.container}>
             <div className={styles.body}>
-              <Transition.Child
+              {/* <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
                 enterFrom="opacity-0 scale-95"
@@ -110,28 +94,34 @@ export default function AddToCartModal({ data }: Props) {
                 leave="ease-in duration-200"
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
-              >
-                <Dialog.Panel className={styles.panel}>
-                  <div className={styles.panelTitle}>
-                    <Dialog.Title as="div" className={styles.panelTitleText}>
-                      Add to cart
-                    </Dialog.Title>
-                    <div className={styles.panelCloseIcon} onClick={closeModal}>
-                      x
-                    </div>
+              > */}
+              <Dialog.Panel className={styles.panel}>
+                <div className={styles.panelTitle}>
+                  <Dialog.Title as="div" className={styles.panelTitleText}>
+                    Add to cart
+                  </Dialog.Title>
+                  <div className={styles.panelCloseIcon} onClick={closeModal}>
+                    x
                   </div>
-
+                </div>
+                {modalData && (
                   <div className={styles.details}>
                     <div className={styles.detailsBody}>
                       <div className={styles.detailsBodyImage}>
-                        <Image src={data.image} alt="item" layout="fill" />
+                        <Image
+                          src={modalData.image}
+                          alt="item"
+                          width={200}
+                          height={200}
+                        />
                       </div>
+
                       <div className={styles.detailsTitle}>
                         <div className={styles.detailsTitleText}>
-                          {data.title}
+                          {modalData.title}
                         </div>
                         <div className={styles.detailsPrice}>
-                          {"Rs. " + data.price}
+                          {"Rs. " + modalData.price}
                         </div>
                       </div>
                     </div>
@@ -162,32 +152,33 @@ export default function AddToCartModal({ data }: Props) {
                       </div>
                     </div>
                   </div>
-                  {!added ? (
-                    <div className={styles.buttons}>
-                      <Button
-                        varient="secondary"
-                        className={styles.button}
-                        onClick={closeModal}
-                      >
-                        Cancel
-                      </Button>
-                      <Button
-                        varient="primary"
-                        className={styles.button}
-                        onClick={handleAdd}
-                      >
-                        Add to cart
-                      </Button>
+                )}
+                {!added ? (
+                  <div className={styles.buttons}>
+                    <Button
+                      varient="secondary"
+                      className={styles.button}
+                      onClick={closeModal}
+                    >
+                      Cancel
+                    </Button>
+                    <Button
+                      varient="primary"
+                      className={styles.button}
+                      onClick={handleAdd}
+                    >
+                      Add to cart
+                    </Button>
+                  </div>
+                ) : (
+                  <div className={styles.itemAdded}>
+                    <div className={styles.itemAddedText}>
+                      Item added successfully
                     </div>
-                  ) : (
-                    <div className={styles.itemAdded}>
-                      <div className={styles.itemAddedText}>
-                        Item added successfully
-                      </div>
-                    </div>
-                  )}
-                </Dialog.Panel>
-              </Transition.Child>
+                  </div>
+                )}
+              </Dialog.Panel>
+              {/* </Transition.Child> */}
             </div>
           </div>
         </Dialog>

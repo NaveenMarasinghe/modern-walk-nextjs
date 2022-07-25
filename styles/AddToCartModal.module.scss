@@ -39,11 +39,11 @@
 }
 
 .detailsBodyImage {
-  @apply flex-1 w-36 h-full relative;
+  @apply flex-1 w-full h-full relative;
 }
 
 .detailsTitle {
-  @apply flex-col w-full text-xl mx-3;
+  @apply flex-1 flex-col w-full text-xl mx-3;
 }
 
 .detailsTitleText {

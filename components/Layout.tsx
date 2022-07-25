@@ -6,6 +6,7 @@ import { useUser } from "@context/userContext";
 import { useApp } from "@context/appContext";
 import SnackBar from "@components/SnackBar";
 import Button from "@components/Button";
+import AddToCartModal from "@components/AddToCartModal";
 
 type Props = {
   children: React.ReactNode;
@@ -25,6 +26,7 @@ export default function PageTemplate({ children }: Props) {
 
   return (
     <div className={styles.homeContainer}>
+      {user?.name && <AddToCartModal />}
       <div className={styles.header}>
         <div className={styles.headerLeft}></div>
         <div className={styles.headerCenter}>

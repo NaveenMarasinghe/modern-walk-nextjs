@@ -1,8 +1,6 @@
 import styles from "@styles/Home.module.scss";
 import Card from "@components/Card";
 import Link from "next/link";
-import { useQuery } from "@tanstack/react-query";
-import { ProductAPI } from "@services/product.services";
 import { Items } from "@typesData/items";
 
 type productDataProp = {
@@ -10,7 +8,6 @@ type productDataProp = {
 };
 
 export default function Home({ data }: productDataProp) {
-  console.log("data", data);
   return (
     <div className={styles.homeContainer}>
       <h2>Flash sale</h2>
