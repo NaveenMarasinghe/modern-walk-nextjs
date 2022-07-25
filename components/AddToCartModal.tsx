@@ -6,7 +6,7 @@ import { useCart } from "@context/cartContext";
 import { useUser } from "@context/userContext";
 import { useQueryClient, useMutation, useQuery } from "@tanstack/react-query";
 import { ProductAPI } from "@services/product.services";
-import styles from "@styles/addToCartModal.module.scss";
+import styles from "@styles/AddToCartModal.module.scss";
 import Button from "@components/Button";
 import Image from "next/image";
 
