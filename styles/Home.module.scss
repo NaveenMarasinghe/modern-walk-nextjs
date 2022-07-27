@@ -6,20 +6,38 @@
 
 .homeCategoriesItems {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
+.homeCategoriesImage {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
 .categoryCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   min-width: 400px;
   border-radius: 30px;
   padding: 50px 20px;
   text-align: center;
-  font-size: 40px;
-  color: white;
+  font-size: 30px;
   font-weight: bolder;
   margin-top: 20px;
   margin-bottom: 50px;
-  box-shadow: 10px 15px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 30px rgba(0, 25, 72, 0.15);
+}
+
+.categoryCard:hover {
+  box-shadow: 0px 10px 40px rgba(0, 25, 72, 0.25);
+}
+
+.categoryCard:active {
+  box-shadow: 0px 5px 30px rgba(0, 25, 72, 0.25);
 }
 
 .women {

@@ -1,4 +1,4 @@
-import Styles from "@styles/Button.module.scss";
+import Styles from "./Button.module.scss";
 
 type Varient =
   | "primary"

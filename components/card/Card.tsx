@@ -1,9 +1,8 @@
-import Styles from "@styles/Card.module.scss";
+import Styles from "./Card.module.scss";
 import { Items } from "@typesData/items";
 import { useUser } from "@context/userContext";
-import AddToCartModal from "@components/AddToCartModal";
 import Image from "next/image";
-import Button from "@components/Button";
+import Button from "@components/button/Button";
 import { useAddToCartModal } from "@context/AddToCartModalContext";
 
 type Props = {

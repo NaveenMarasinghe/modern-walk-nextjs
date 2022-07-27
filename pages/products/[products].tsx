@@ -1,7 +1,7 @@
 import Layout from "@components/Layout";
 import { useEffect, useState } from "react";
 import styles from "@styles/Clothing.module.scss";
-import Card from "@components/Card";
+import Card from "@components/card/Card";
 import { Items, CategoryDetails } from "@typesData/items";
 import { useQuery } from "@tanstack/react-query";
 import { ProductAPI } from "@services/product.services";

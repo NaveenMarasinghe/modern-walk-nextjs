@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <CartProvider>
           <AddToCartModalContextProvider>
             <QueryClientProvider client={queryClient}>
-              <Component {...pageProps} />{" "}
+              <Component {...pageProps} />
             </QueryClientProvider>
           </AddToCartModalContextProvider>
         </CartProvider>

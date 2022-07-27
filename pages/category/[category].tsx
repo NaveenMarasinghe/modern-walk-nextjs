@@ -1,16 +1,23 @@
 import Layout from "@components/Layout";
 import { useEffect, useState } from "react";
 import styles from "@styles/Clothing.module.scss";
-import Card from "@components/Card";
+import Card from "@components/card/Card";
 import { Items, CategoryDetails } from "@typesData/items";
 import { ProductAPI } from "@services/product.services";
 
+export enum categoriesEnum {
+  men = "men",
+  women = "women",
+  electronics = "electronics",
+  jewelary = "jewelary",
+}
+
 export async function getStaticPaths() {
   const paths = [
-    { params: { category: "men" } },
-    { params: { category: "women" } },
-    { params: { category: "electronics" } },
-    { params: { category: "jewelary" } },
+    { params: { category: categoriesEnum.men } },
+    { params: { category: categoriesEnum.women } },
+    { params: { category: categoriesEnum.electronics } },
+    { params: { category: categoriesEnum.jewelary } },
   ];
   return {
     paths,

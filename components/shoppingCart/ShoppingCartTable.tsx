@@ -9,7 +9,7 @@ import { useCart } from "@context/cartContext";
 import { useUser } from "@context/userContext";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { ProductAPI } from "@services/product.services";
-import Button from "@components/Button";
+import Button from "@components/button/Button";
 
 export type CartItems = {
   id: number;

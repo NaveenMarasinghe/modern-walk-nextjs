@@ -1,6 +1,6 @@
 import * as React from "react";
 import { UserAPI } from "@services/user.services";
-import Input from "@components/Input";
+import Input from "@components/input/Input";
 import styles from "@styles/Signup.module.scss";
 import { useRouter } from "next/router";
 

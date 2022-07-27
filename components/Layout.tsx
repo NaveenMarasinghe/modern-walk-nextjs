@@ -1,12 +1,12 @@
 import * as React from "react";
 import styles from "@styles/Layout.module.scss";
 import Link from "next/link";
-import ShoppingCart from "@components/ShoppingCart";
+import ShoppingCart from "@components/shoppingCart/ShoppingCart";
 import { useUser } from "@context/userContext";
 import { useApp } from "@context/appContext";
 import SnackBar from "@components/SnackBar";
-import Button from "@components/Button";
-import AddToCartModal from "@components/AddToCartModal";
+import Button from "@components/button/Button";
+import AddToCartModal from "@components/addToCartModal/AddToCartModal";
 
 type Props = {
   children: React.ReactNode;

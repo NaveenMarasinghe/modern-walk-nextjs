@@ -1,13 +1,12 @@
 import { Dispatch, Fragment, useState } from "react";
 import { Popover, Transition, Dialog } from "@headlessui/react";
-import ShoppingCartTable from "@components/ShoppingCartTable";
+import ShoppingCartTable from "@components/shoppingCart/ShoppingCartTable";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { ProductAPI } from "@services/product.services";
 import { useUser } from "@context/userContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import styles from "@styles/ShoppingCart.module.scss";
-import { style } from "@mui/system";
-import Button from "@components/Button";
+import styles from "./ShoppingCart.module.scss";
+import Button from "@components/button/Button";
 
 type Props = {
   setOpen: Dispatch<React.SetStateAction<boolean>>;

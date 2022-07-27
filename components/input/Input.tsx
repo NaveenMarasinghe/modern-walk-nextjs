@@ -1,4 +1,4 @@
-import Styles from "@styles/Input.module.scss";
+import Styles from "./Input.module.scss";
 
 type Props = {
   varient?: string;

@@ -1,13 +1,12 @@
 import { useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
-import { Items } from "@typesData/items";
 import { useCart } from "@context/cartContext";
 import { useUser } from "@context/userContext";
 import { useQueryClient, useMutation, useQuery } from "@tanstack/react-query";
 import { ProductAPI } from "@services/product.services";
-import styles from "@styles/AddToCartModal.module.scss";
-import Button from "@components/Button";
+import styles from "./AddToCartModal.module.scss";
+import Button from "@components/button/Button";
 import Image from "next/image";
 import { useAddToCartModal } from "@context/AddToCartModalContext";
 

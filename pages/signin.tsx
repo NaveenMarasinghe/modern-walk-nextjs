@@ -7,7 +7,7 @@ import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import styles from "@styles/Signin.module.scss";
-import Input from "@components/Input";
+import Input from "@components/input/Input";
 import { useRouter } from "next/router";
 
 export default function Signin() {
