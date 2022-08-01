@@ -4,6 +4,8 @@ import { useUser } from "@context/userContext";
 import Image from "next/image";
 import Button from "@components/button/Button";
 import { useAddToCartModal } from "@context/AddToCartModalContext";
+import React from "react";
+import { User } from "@typesData/user";
 
 type Props = {
   data: Items;
@@ -11,8 +13,16 @@ type Props = {
 };
 
 export default function Card({ data, type }: Props) {
-  const { user } = useUser();
+  const [user, setUser] = React.useState<User | null>();
+  const { getUser } = useUser();
   const { modalData, openModal, closeModal } = useAddToCartModal();
+
+  React.useEffect(() => {
+    const userDetails = getUser();
+    if (userDetails) {
+      setUser(userDetails);
+    }
+  }, [getUser]);
 
   return (
     <div className={Styles["cardContainer"]}>

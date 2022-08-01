@@ -22,11 +22,7 @@ export default function Home({ data }: productDataProp) {
       <div className={styles.homeCategories}>
         <h2>Categories</h2>
         <div className={styles.homeCategoriesItems}>
-          <Link
-            href="website-1/products/men"
-            as="products/men"
-            style={{ textDecoration: "none" }}
-          >
+          <Link href="/products/men" style={{ textDecoration: "none" }}>
             <a>
               <div className={styles.categoryCard}>
                 <div className={styles.homeCategoriesImage}>
@@ -40,7 +36,7 @@ export default function Home({ data }: productDataProp) {
               </div>
             </a>
           </Link>
-          <Link href="/category/women" style={{ textDecoration: "none" }}>
+          <Link href="/products/women" style={{ textDecoration: "none" }}>
             <a>
               <div className={styles.categoryCard}>
                 <div className={styles.homeCategoriesImage}>
@@ -54,7 +50,7 @@ export default function Home({ data }: productDataProp) {
               </div>
             </a>
           </Link>
-          <Link href="/category/electronics" style={{ textDecoration: "none" }}>
+          <Link href="/products/electronics" style={{ textDecoration: "none" }}>
             <a>
               <div className={styles.categoryCard}>
                 <div className={styles.homeCategoriesImage}>
@@ -68,7 +64,7 @@ export default function Home({ data }: productDataProp) {
               </div>
             </a>
           </Link>
-          <Link href="/category/jewelary" style={{ textDecoration: "none" }}>
+          <Link href="/products/jewelary" style={{ textDecoration: "none" }}>
             <a>
               <div className={styles.categoryCard}>
                 <div className={styles.homeCategoriesImage}>

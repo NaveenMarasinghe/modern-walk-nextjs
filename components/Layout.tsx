@@ -7,6 +7,8 @@ import { useApp } from "@context/appContext";
 import SnackBar from "@components/SnackBar";
 import Button from "@components/button/Button";
 import AddToCartModal from "@components/addToCartModal/AddToCartModal";
+import { User } from "@typesData/user";
+import { useRouter } from "next/router";
 
 type Props = {
   children: React.ReactNode;
@@ -14,12 +16,21 @@ type Props = {
 
 export default function PageTemplate({ children }: Props) {
   const [open, setOpen] = React.useState(false);
+  const [user, setUser] = React.useState<User | null>();
 
-  const { logoutUser, user } = useUser();
+  const { logoutUser, getUser } = useUser();
+
+  const router = useRouter();
+
+  React.useEffect(() => {
+    const userDetails = getUser();
+    setUser(userDetails);
+  }, [getUser]);
 
   const handleLogout = () => {
     logoutUser();
     openAlert("Logged out successfully");
+    router.push("/");
   };
 
   const { alertMessage, openAlert } = useApp();

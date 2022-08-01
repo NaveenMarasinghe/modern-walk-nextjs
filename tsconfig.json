@@ -21,7 +21,9 @@
       "@styles/*": ["styles/*"],
       "@services/*": ["services/*"],
       "@context/*": ["context/*"],
-      "@sections/*": ["sections/*"]
+      "@sections/*": ["sections/*"],
+      "@website-1/*": ["pages/website-1/*"],
+
   }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "additional.d.ts"],
