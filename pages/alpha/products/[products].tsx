@@ -8,22 +8,48 @@ import { ProductAPI } from "@services/product.services";
 import { ClothingType } from "@services/product.services";
 import { useRouter } from "next/router";
 
-type ClothingProp = {
-  category: ClothingType;
-};
+export enum categoriesEnum {
+  men = "men",
+  women = "women",
+  electronics = "electronics",
+  jewelery = "jewelery",
+}
 
-export default function Products({ category }: ClothingProp) {
+export default function Products(tenant: string) {
   const router = useRouter();
   const { products } = router.query;
+
+  // if (products) {
+  //   if (
+  //     !Object.values(categoriesEnum).includes(
+  //       products as unknown as categoriesEnum
+  //     )
+  //   ) {
+  //     router.push("/404");
+  //   }
+  // }
   const [categoryDetails, setCategoryDetails] =
     useState<CategoryDetails | null>(null);
 
-  const { isLoading, data } = useQuery([products], async () => {
-    return await ProductAPI.clothing(products);
+  const returnProductCategory = () => {
+    switch (router.query.products) {
+      case "men":
+        return "men%27s%20clothing";
+      case "women":
+        return "women%27s%20clothing";
+      case "electronics":
+        return "electronics";
+      case "jewelery":
+        return "jewelery";
+    }
+  };
+
+  const { isLoading, data } = useQuery([returnProductCategory()], async () => {
+    return await ProductAPI.items(returnProductCategory(), tenant);
   });
 
   useEffect(() => {
-    switch (category) {
+    switch (products) {
       case "women":
         setCategoryDetails({
           id: 1,
@@ -39,7 +65,7 @@ export default function Products({ category }: ClothingProp) {
         });
         break;
     }
-  }, [category]);
+  }, [products]);
 
   return (
     <Layout>

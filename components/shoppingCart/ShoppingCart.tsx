@@ -1,12 +1,14 @@
+import React from "react";
 import { Dispatch, Fragment, useState } from "react";
 import { Popover, Transition, Dialog } from "@headlessui/react";
-import ShoppingCartTable from "@components/shoppingCart/ShoppingCartTable";
+import ShoppingCartTable from "./ShoppingCartTable";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { ProductAPI } from "@services/product.services";
 import { useUser } from "@context/userContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import styles from "./ShoppingCart.module.scss";
 import Button from "@components/button/Button";
+import { User } from "@typesData/user";
 
 type Props = {
   setOpen: Dispatch<React.SetStateAction<boolean>>;
@@ -15,13 +17,21 @@ type Props = {
 
 export default function ShoppingCart({ setOpen, open }: Props) {
   const [showShoppingCart, setShowShoppingCart] = useState(false);
-  const { user } = useUser();
+  const [user, setUser] = React.useState<User | null>();
+  const { getUser } = useUser();
   const queryClient = useQueryClient();
   const handleClose = () => {
     setOpen(false);
   };
 
   let [isOpen, setIsOpen] = useState(false);
+
+  React.useEffect(() => {
+    const userDetails = getUser();
+    if (userDetails) {
+      setUser(userDetails);
+    }
+  }, [getUser]);
 
   function closeModal() {
     setIsOpen(false);

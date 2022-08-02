@@ -12,10 +12,10 @@ export enum categoriesEnum {
   men = "men",
   women = "women",
   electronics = "electronics",
-  jewelary = "jewelary",
+  jewelery = "jewelery",
 }
 
-export default function Products() {
+export default function Products(tenant: string) {
   const router = useRouter();
   const { products } = router.query;
 
@@ -31,8 +31,21 @@ export default function Products() {
   const [categoryDetails, setCategoryDetails] =
     useState<CategoryDetails | null>(null);
 
-  const { isLoading, data } = useQuery([router.query.products], async () => {
-    return await ProductAPI.clothing(router.query.products);
+  const returnProductCategory = () => {
+    switch (router.query.products) {
+      case "men":
+        return "men%27s%20clothing";
+      case "women":
+        return "women%27s%20clothing";
+      case "electronics":
+        return "electronics";
+      case "jewelery":
+        return "jewelery";
+    }
+  };
+
+  const { isLoading, data } = useQuery([returnProductCategory()], async () => {
+    return await ProductAPI.items(returnProductCategory(), tenant);
   });
 
   useEffect(() => {

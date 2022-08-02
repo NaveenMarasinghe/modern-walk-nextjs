@@ -22,7 +22,7 @@
       "@services/*": ["services/*"],
       "@context/*": ["context/*"],
       "@sections/*": ["sections/*"],
-      "@website-1/*": ["pages/website-1/*"],
+      "@alpha/*": ["pages/alpha/*"],
 
   }
   },

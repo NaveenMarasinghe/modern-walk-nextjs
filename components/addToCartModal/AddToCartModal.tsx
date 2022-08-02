@@ -9,16 +9,26 @@ import styles from "./AddToCartModal.module.scss";
 import Button from "@components/button/Button";
 import Image from "next/image";
 import { useAddToCartModal } from "@context/AddToCartModalContext";
+import { User } from "@typesData/user";
 
 export default function AddToCartModal() {
   const { modalData, closeModal } = useAddToCartModal();
   const [qty, setQty] = useState(1);
   const [total, setTotal] = useState(modalData?.price);
   const { cart, addToCart } = useCart();
-  const { user } = useUser();
+  const { getUser } = useUser();
   const [added, setAdded] = useState(false);
 
+  const [user, setUser] = useState<User | null>();
+
   const queryClient = useQueryClient();
+
+  useEffect(() => {
+    const userDetails = getUser();
+    if (userDetails) {
+      setUser(userDetails);
+    }
+  }, [getUser]);
 
   const handlePlus = () => {
     setQty(qty + 1);

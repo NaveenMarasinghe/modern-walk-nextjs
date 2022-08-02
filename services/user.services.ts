@@ -35,8 +35,18 @@ async function email(email: string) {
   }
 }
 
+async function getTenant(tenant: string) {
+  try {
+    const res = await axiosInstance.get(`/tenant/name=${tenant}`);
+    return res;
+  } catch (err) {
+    return err;
+  }
+}
+
 export const UserAPI = {
   login: login,
   signup: signup,
   email: email,
+  getTenant: getTenant,
 };

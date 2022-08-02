@@ -10,6 +10,7 @@ import { useUser } from "@context/userContext";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { ProductAPI } from "@services/product.services";
 import Button from "@components/button/Button";
+import { User } from "@typesData/user";
 
 export type CartItems = {
   id: number;
@@ -21,11 +22,19 @@ export type CartItems = {
 
 export default function ShoppingCartTable() {
   const [items, setItems] = React.useState<CartItems[]>([]);
-  const { user } = useUser();
+  const [user, setUser] = React.useState<User | null>();
+  const { getUser } = useUser();
   const { cart, removeFromCart } = useCart();
   const [successStatus, setSuccessStatus] = React.useState(false);
 
   const queryClient = useQueryClient();
+
+  React.useEffect(() => {
+    const userDetails = getUser();
+    if (userDetails) {
+      setUser(userDetails);
+    }
+  }, [getUser]);
 
   const { status, isLoading, isError, data, error } = useQuery(
     ["getCart"],
@@ -33,7 +42,8 @@ export default function ShoppingCartTable() {
       if (user?.id) {
         return await ProductAPI.getCart(user.id);
       }
-    }
+    },
+    { enabled: !!user }
   );
   console.log(data?.data);
 

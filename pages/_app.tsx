@@ -6,6 +6,7 @@ import { CartProvider } from "@context/cartContext";
 import { AddToCartModalContextProvider } from "@context/AddToCartModalContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { NextPage, NextPageContext } from "next";
+import { UserAPI } from "@services/user.services";
 
 type InitialPropsType = {
   Component: NextPage;
@@ -37,16 +38,20 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 MyApp.getInitialProps = async ({ Component, ctx }: InitialPropsType) => {
   const tenant = ctx?.req?.tenant?.name;
-  let pageProps = {};
-  if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps(ctx);
+  const tenantCheck = await UserAPI.getTenant(tenant);
+  console.log("tenantcheck", tenantCheck);
+  if (tenantCheck) {
+    let pageProps = {};
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx);
+    }
+    return {
+      pageProps: {
+        ...pageProps,
+        tenant,
+      },
+    };
   }
-  return {
-    pageProps: {
-      ...pageProps,
-      tenant,
-    },
-  };
 };
 
 export default MyApp;

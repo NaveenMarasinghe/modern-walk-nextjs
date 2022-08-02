@@ -1,7 +1,7 @@
 module.exports = {
   tenants: [
     {
-      name: "website-1",
+      name: "alpha",
       domains: [
         {
           development: /alpha\.abc\.com/,
@@ -11,10 +11,10 @@ module.exports = {
       ],
     },
     {
-      name: "website-2",
+      name: "beta",
       domains: [
         {
-          development: /beta\.xyz\.com/,
+          development: /beta\.abc\.com/,
           stage: "stage.xyz.com",
           production: /[\w|\d|-|_]+\.xyz.com/,
         },

@@ -39,7 +39,7 @@ const AppProvider = ({ children }: Props) => {
 const useApp = () => {
   const context = React.useContext(AppContext);
   if (!context) {
-    throw new Error("useUser can only be used inside UserProvider");
+    throw new Error("useApp can only be used inside UserProvider");
   }
   return context;
 };

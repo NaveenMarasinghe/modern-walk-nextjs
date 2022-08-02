@@ -38,8 +38,8 @@ export default function Card({ data, type }: Props) {
       <div className={type === 1 ? Styles["women"] : Styles["men"]}>
         <div className={Styles["cardPrice"]}>RS {data.price}</div>
         <div className={Styles["cardDescription"]}>
-          {data.description.substring(0, 140) +
-            (data.description.length > 140 && "...")}
+          {data.description.substring(0, 100) +
+            (data.description.length > 100 && "...")}
         </div>
         <div>
           {user?.name && (
