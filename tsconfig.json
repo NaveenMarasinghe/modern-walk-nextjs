@@ -22,7 +22,7 @@
       "@services/*": ["services/*"],
       "@context/*": ["context/*"],
       "@sections/*": ["sections/*"],
-      "@alpha/*": ["pages/alpha/*"],
+      "@alpha/*": ["pages/modernwalk/*"],
 
   }
   },

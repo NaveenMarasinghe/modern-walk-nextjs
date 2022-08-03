@@ -1,0 +1,43 @@
+{
+  "breakpoints": {
+    "mobile": 980
+  },
+  "fontSize": {
+    "h1": "44px",
+    "h2": "37px",
+    "h3": "32px",
+    "h4": "26px",
+    "h5": "23px",
+    "h6": "15px",
+    "base": "16px",
+    "small": "14px",
+    "xs": "12px"
+  },
+  "colors": {
+    "primary": "#EB8120",
+    "primaryHover": "#F17502",
+    "primarySelected": "#D16400",
+    "primaryInverse-hover": "#F7CDA6",
+    "primaryInverse-hover-click": "#EBB888",
+    "fontMain": "#001948",
+    "fontActiveBorder": "#7C89A1",
+    "fontInactiveBorder": "#C6CBD5",
+    "bgElephantGrey": "#F7F8F9",
+    "bgElephantContrast": "#F0F2F5",
+    "bgWhite": "#FFFFFF",
+    "linkColor": "#6A81FD",
+    "linkColorHover": "#5467CE",
+    "linkColorActive": "#4054C1",
+    "linkColorDisabled": "#A5B0E3",
+    "dangerColor": "#E1273D",
+    "dangerColorGlow": "#ED9AA4",
+    "dangerColorInactive": "#F0939E",
+    "dangerColorDisabled": "#F9D4D8",
+    "dangerColorHover": "#C01227",
+    "dangerColorActive": "#9D0215"
+  },
+  "widths": {
+    "pageContent": "1080px"
+  },
+  "heights": {}
+}

@@ -1,13 +1,12 @@
 module.exports = {
   tenants: [
     {
-      name: "alpha",
+      name: "modernwalk",
       domains: [
         {
-          development: /alpha\.abc\.com/,
-          stage:
-            /alpha.modernwalkapp-env.eba-y3yhjrku.ap-south-1.elasticbeanstalk.com/,
-          production: /alpha\.abc\.com/,
+          development: /[a-z]*\.modernwalk\.com/,
+          production:
+            /[a-z]\.modernwalkapp-env.eba-y3yhjrku.ap-south-1.elasticbeanstalk.com/,
         },
       ],
     },

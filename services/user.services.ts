@@ -35,13 +35,16 @@ async function email(email: string) {
   }
 }
 
-async function getTenant(tenant: string) {
+async function getTenant(tenant: any) {
+  let tenantCode = null;
   try {
-    const res = await axiosInstance.get(`/tenant/name=${tenant}`);
-    return res;
+    const hostArr = tenant?.split(".");
+    const res = await axiosInstance.get(`/tenant?name=${hostArr[0]}`);
+    tenantCode = res?.data[0];
   } catch (err) {
-    return err;
+    console.log(err);
   }
+  return tenantCode;
 }
 
 export const UserAPI = {
