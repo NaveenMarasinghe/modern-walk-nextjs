@@ -5,7 +5,8 @@ module.exports = {
       domains: [
         {
           development: /alpha\.abc\.com/,
-          stage: "stage.abc.com",
+          stage:
+            /alpha.modernwalkapp-env.eba-y3yhjrku.ap-south-1.elasticbeanstalk.com/,
           production: "abc.com",
         },
       ],
@@ -15,7 +16,8 @@ module.exports = {
       domains: [
         {
           development: /beta\.abc\.com/,
-          stage: "stage.xyz.com",
+          stage:
+            /beta.modernwalkapp-env.eba-y3yhjrku.ap-south-1.elasticbeanstalk.com/,
           production: /[\w|\d|-|_]+\.xyz.com/,
         },
       ],
