@@ -39,7 +39,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 MyApp.getInitialProps = async ({ Component, ctx }: InitialPropsType) => {
   const tenant = ctx?.req?.tenant?.name;
   const tenantCheck = await UserAPI.getTenant(tenant);
-  console.log("tenantcheck", tenantCheck);
+  //console.log("tenantcheck", tenantCheck);
   if (tenantCheck) {
     let pageProps = {};
     if (Component.getInitialProps) {
