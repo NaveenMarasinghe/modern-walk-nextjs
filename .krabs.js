@@ -6,7 +6,7 @@ module.exports = {
         {
           development: /[a-z]*\.modernwalk\.com/,
           production:
-            /[a-z0-9]*\.modernwalkapp-env\.eba-y3yhjrku\.ap-south-1\.elasticbeanstalk\.com/,
+            "shop1.modernwalkapp-env.eba-y3yhjrku.ap-south-1.elasticbeanstalk.com/",
         },
       ],
     },
