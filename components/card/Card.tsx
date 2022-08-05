@@ -35,7 +35,7 @@ export default function Card({ data, type }: Props) {
           layout="fill"
         ></Image>
       </div>
-      <div className={type === 1 ? Styles["women"] : Styles["men"]}>
+      <div className={type === 456 ? Styles["women"] : Styles["men"]}>
         <div className={Styles["cardPrice"]}>RS {data.price}</div>
         <div className={Styles["cardDescription"]}>
           {data.description.substring(0, 100) +

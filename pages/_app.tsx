@@ -30,6 +30,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       return theme1;
     } else return theme2;
   };
+  // if (pageProps.tenant===null){
+  //   return
+  // }
   return (
     <UserProvider>
       <AppProvider>
@@ -47,8 +50,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 
 MyApp.getInitialProps = async ({ Component, ctx }: InitialPropsType) => {
+  let tenantCode;
   const tenant = ctx?.req?.headers?.host;
-  const tenantCode = await UserAPI.getTenant(tenant);
+  tenantCode = await UserAPI.getTenant(tenant);
   console.log("ctx", tenantCode);
   if (tenantCode.code) {
     let pageProps = {};

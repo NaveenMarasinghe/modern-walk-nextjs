@@ -20,7 +20,7 @@ export default function Homepage({ tenant }: any) {
         <div className={styles.homeFlashSaleItems}>
           {!data?.error ? (
             data?.result?.map((item: Items) => (
-              <Card key={item.id} data={item} />
+              <Card key={item.id} data={item} type={tenant} />
             ))
           ) : (
             <div>{data?.error.message}</div>
