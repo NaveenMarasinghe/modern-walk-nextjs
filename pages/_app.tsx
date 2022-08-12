@@ -6,7 +6,7 @@ import { CartProvider } from "@context/cartContext";
 import { AddToCartModalContextProvider } from "@context/AddToCartModalContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { NextPage, NextPageContext } from "next";
-import { UserAPI } from "@services/user.services";
+import { TenantAPI } from "@services/tenant.services";
 import RootStyleLoader from "../utils/root-style-loader.utility";
 import theme1 from "../utils/theme1.config.json";
 import theme2 from "../utils/theme2.config.json";
@@ -52,7 +52,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 MyApp.getInitialProps = async ({ Component, ctx }: InitialPropsType) => {
   let tenantCode;
   const tenant = ctx?.req?.headers?.host;
-  tenantCode = await UserAPI.getTenant(tenant);
+  tenantCode = await TenantAPI.getTenant(tenant);
   console.log("ctx", tenantCode);
   if (tenantCode.code) {
     let pageProps = {};
