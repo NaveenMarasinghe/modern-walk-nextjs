@@ -23,6 +23,7 @@
       "@context/*": ["context/*"],
       "@sections/*": ["sections/*"],
       "@alpha/*": ["pages/modernwalk/*"],
+      "@utils/*": ["utils/*"],
 
   }
   },

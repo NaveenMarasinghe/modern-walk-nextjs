@@ -1,20 +1,31 @@
+import Link from "next/link";
+import Image from "next/image";
+import { Items } from "@typesData/items";
 import styles from "@styles/Home.module.scss";
 import Card from "@components/card/Card";
-import Link from "next/link";
-import { Items } from "@typesData/items";
-import Image from "next/image";
+import { ProductAPI } from "@services/product.services";
+import { useQuery } from "@tanstack/react-query";
 
 type productDataProp = {
-  data: any;
+  tenant: any;
 };
 
-export default function Home({ data }: productDataProp) {
+export default function Home({ tenant }: productDataProp) {
+  const { isLoading, data } = useQuery(
+    ["home"],
+    async () => {
+      return await ProductAPI.sale(tenant);
+    },
+    { enabled: !!tenant }
+  );
+  console.log("tenant from home:", tenant);
+  console.log("data", data);
   return (
     <div className={styles.homeContainer}>
       <h2>Flash sale</h2>
       <div className={styles.homeFlashSaleItems}>
         {!data?.error ? (
-          data?.map((item: Items) => <Card key={item.id} data={item} />)
+          data?.result?.map((item: Items) => <Card key={item.id} data={item} />)
         ) : (
           <div>{data?.error.message}</div>
         )}
@@ -23,7 +34,7 @@ export default function Home({ data }: productDataProp) {
         <h2>Categories</h2>
         <div className={styles.homeCategoriesItems}>
           <Link
-            href="website-1/products/men"
+            href="/products/men"
             as="products/men"
             style={{ textDecoration: "none" }}
           >
