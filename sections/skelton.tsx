@@ -26,9 +26,7 @@ export default function Skelton({ children }: Props) {
           <AddToCartModalContextProvider>
             <QueryClientProvider client={queryClient}>
               <RootStyleLoader theme={theme1} />
-              <Layout>
-                <div>{children}</div>
-              </Layout>
+              <div>{children}</div>
             </QueryClientProvider>
           </AddToCartModalContextProvider>
         </CartProvider>

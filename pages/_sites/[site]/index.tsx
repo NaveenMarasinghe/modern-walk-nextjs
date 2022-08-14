@@ -1,9 +1,10 @@
 import React from "react";
 import "@styles/Home.module.scss";
 import Skelton from "@sections/skelton";
-import Home from "@sections/Home";
+import Home from "@sections/home";
 import { useRouter } from "next/router";
 import { TenantAPI } from "@services/tenant.services";
+import Layout from "@components/Layout";
 
 type TenantData = {
   id: string;
@@ -30,7 +31,9 @@ export default function Homepage() {
 
   return (
     <Skelton>
-      <Home tenant={tenantData?.code} />
+      <Layout>
+        <Home tenant={tenantData?.code} />
+      </Layout>
     </Skelton>
   );
 }
