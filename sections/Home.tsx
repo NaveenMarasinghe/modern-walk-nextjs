@@ -18,8 +18,6 @@ export default function Home({ tenant }: productDataProp) {
     },
     { enabled: !!tenant }
   );
-  console.log("tenant from home:", tenant);
-  console.log("data", data);
   return (
     <div className={styles.homeContainer}>
       <h2>Flash sale</h2>
@@ -33,11 +31,7 @@ export default function Home({ tenant }: productDataProp) {
       <div className={styles.homeCategories}>
         <h2>Categories</h2>
         <div className={styles.homeCategoriesItems}>
-          <Link
-            href="/products/men"
-            as="products/men"
-            style={{ textDecoration: "none" }}
-          >
+          <Link href="/category/men" style={{ textDecoration: "none" }}>
             <a>
               <div className={styles.categoryCard}>
                 <div className={styles.homeCategoriesImage}>

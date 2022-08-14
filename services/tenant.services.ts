@@ -9,7 +9,6 @@ async function getTenant(tenant: any) {
   } catch (err) {
     console.log(err);
   }
-  console.log("tenantCode::Service", tenantCode);
   return tenantCode;
 }
 

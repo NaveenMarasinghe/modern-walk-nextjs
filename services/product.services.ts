@@ -28,9 +28,8 @@ export type CategoryResponse = {
 const items = async (category: any, tenant: any): Promise<Response> => {
   try {
     const result: ItemsResponse = await axiosInstance.get(
-      `/items?category=${category}&tenant=${tenant.tenant}`
+      `/items?category=${category}&tenant=${tenant}`
     );
-    console.log(tenant.tenant);
     return { result: result.data };
   } catch (err: any) {
     const error = err as ErrorResponse;
@@ -44,7 +43,6 @@ const sale = async (tenant: string): Promise<Response> => {
     const result: ItemsResponse = await axiosInstance.get(
       `/items?_page=1&_limit=4&tenant=${tenant}`
     );
-    console.log(result);
     return { result: result.data };
   } catch (err: any) {
     const error = err as ErrorResponse;

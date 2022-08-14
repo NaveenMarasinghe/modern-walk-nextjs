@@ -1,35 +1,36 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export const config = {
-  matcher: [
-    "/",
-    "/([^/.]*)", // exclude `/public` files by matching all paths except for paths containing `.` (e.g. /logo.png)
-    "/site/:path*", // for app.vercel.pub/site/[siteId]
-    "/post/:path*", // for app.vercel.pub/post/[postId]
-    "/_sites/:path*", // for all custom hostnames under the `/_sites/[site]*` dynamic route (demo.vercel.pub, platformize.co)
-  ],
-};
-
+/**
+ * @param req
+ */
 export default function middleware(req: NextRequest) {
   const url = req.nextUrl;
+  // Get hostname (e.g. vercel.com, test.vercel.app, etc.)
+  const hostname = req.headers.get("host");
 
-  // Get hostname of request (e.g. demo.vercel.pub, demo.localhost:3000)
-  const hostname = req.headers.get("host") || "demo.vercel.pub";
-
+  // If localhost, assign the host value manually
+  // If prod, get the custom domain/subdomain value by removing the root URL
+  // (in the case of "test.vercel.app", "vercel.app" is the root URL)
   const currentHost =
-    process.env.NODE_ENV === "production" && process.env.VERCEL === "1"
-      ? hostname
-          .replace(`.vercel.pub`, "")
-          .replace(`.platformize.vercel.app`, "")
-      : hostname.replace(`.localhost:3000`, "");
+    process.env.NODE_ENV == "production"
+      ? hostname?.replace(`.domain.com`, "") // PUT YOUR DOMAIN HERE
+      : hostname?.replace(`.localhost:3000`, "");
 
-  // rewrite root application to `/home` folder
-  if (hostname === "localhost:3000" || hostname === "home.modernwalk.com") {
-    url.pathname = `/home${url.pathname}`;
-    return NextResponse.rewrite(url);
+  // Prevent security issues – users should not be able to canonically access
+  // the pages/sites folder and its respective contents. This can also be done
+  // via rewrites to a custom 404 page
+  if (url.pathname.startsWith(`/_sites`)) {
+    return new Response(null, { status: 404 });
   }
 
-  // rewrite everything else to `/_sites/[site] dynamic route
-  url.pathname = `/_sites/${currentHost}${url.pathname}`;
-  return NextResponse.rewrite(url);
+  if (
+    !url.pathname.includes(".") && // exclude all files in the public folder
+    !url.pathname.includes("/_next/image") && // exclude all images
+    !url.pathname.startsWith("/api") // exclude all API routes
+  ) {
+    // rewrite to the current hostname under the pages/sites folder
+    // the main logic component will happen in pages/sites/[site]/index.tsx
+    url.pathname = `/_sites/${currentHost}${url.pathname}`;
+    return NextResponse.rewrite(url);
+  }
 }
